@@ -9,7 +9,7 @@
     "typescript": "4.5.4"
   },
   "scripts": {
-    "dev": "ts-node ./script.ts"
+    "dev": "ts-node ./testConcurrentWrites.ts"
   },
   "dependencies": {
     "@prisma/client": "3.9.1",
