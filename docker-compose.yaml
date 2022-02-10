@@ -1,0 +1,15 @@
+version: "3.1"
+
+services:
+  db:
+    image: postgres:13
+    restart: always
+    container_name: test-db
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./pg-init-scripts:/docker-entrypoint-initdb.d
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_MULTIPLE_DATABASES: workflow,data-engine
+      POSTGRES_PASSWORD: postgres
