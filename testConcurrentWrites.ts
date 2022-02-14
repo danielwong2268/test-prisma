@@ -1,7 +1,9 @@
 import { PrismaClient } from "@prisma/client";
 import { range } from "lodash";
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient({
+  log: ["error", "info", "query", "warn"],
+});
 
 type TransactionPrisma = Omit<
   PrismaClient,
@@ -27,8 +29,8 @@ async function main() {
 
   // Set this value to the number of parallel transactions
   const CONCURRENCY = 10;
-  const WITH_LOCK = false;
-  const ADD_DELAY = false;
+  const WITH_LOCK = true;
+  const ADD_DELAY = true;
 
   const promises = range(0, CONCURRENCY).map(() =>
     prisma.$transaction(
